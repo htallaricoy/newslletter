@@ -39,6 +39,8 @@ Route::get('/posts', 'PostsController@index')->middleware('OutsideBlock');
 Route::get('/posts/create', 'PostsController@create')->middleware('CheckAdmin','OutsideBlock');
 // 記事投稿処理 sessionId1~5以外をブロック
 Route::post('/posts/create', 'PostsController@store')->middleware('CheckAdmin','OutsideBlock');
+// 記事の公開・非公開
+Route::post('/posts', 'ApproveController@update')->middleware('CheckAdmin','OutsideBlock');
 // 記事一件表示
 Route::get('/posts/{id}', 'PostsController@show')->middleware('OutsideBlock');
 
@@ -47,3 +49,6 @@ Route::get('/shanai', 'LoginController@loginForShanaiPage');
 
 Route::get('/contents', 'NewsLetter@index');
 
+//メール
+//メール送信
+Route::get('/mail', 'MailSendController');

@@ -12,7 +12,7 @@ class AdminPostController extends Controller
     public function index(){
         Post::all();
         $posts = DB::table('posts')->get();
-        return view('pages/post/index',compact('posts'));
+        return view('/pages/post/index',compact('posts'));
     }
 
     public function create(Request $request){

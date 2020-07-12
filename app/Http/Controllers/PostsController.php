@@ -8,26 +8,54 @@ use App\models\Post;
 use Validator;
 use Datetime;
 use DB;
-
+use Illuminate\Support\Facades\Mail;
 
 class PostsController extends Controller
 {
     public function index(Request $request)
     {
-        $items = DB::table('posts')
-                ->select('posts.id', 'title', 'message', 'created_at', 'department')
-                ->join('accounts', 'posts.user_id', '=', 'accounts.id')
-                ->get();
-
         $id = $request->session()->get('userId');
 
-        $department = DB::table('accounts')
-                    ->select('department')
-                    ->where('id', $id)
-                    ->value('department');
+        // ログインユーザーがID6なら公開済み記事のみ取得
+        // ID1なら未公開含め全投稿記事を取得
+        // ID2～5なら公開済の全件記事及び未公開の自部署投稿記事を取得
+        if ($id === 6){
+            $items = DB::table('posts')
+            ->select('posts.id', 'title', 'message', 'created_at', 'department', 'is_released')
+            ->join('accounts', 'posts.user_id', '=', 'accounts.id')
+            ->where('is_released', true)
+            ->get();
 
-        return view('/pages/posts/index', ['items' => $items , 'userId' => $id , 'department' => $department]); // ビューの描画
+            $department = DB::table('accounts')
+            ->select('department')
+            ->where('id', $id)
+            ->value('department');
 
+        } elseif($id === 1) {
+            $items = DB::table('posts')
+            ->select('posts.id', 'title', 'message', 'created_at', 'department', 'is_released')
+            ->join('accounts', 'posts.user_id', '=', 'accounts.id')
+            ->get();
+
+             $department = DB::table('accounts')
+            ->select('department')
+            ->where('id', $id)
+            ->value('department');
+        } else {
+            $items = DB::table('posts')
+            ->select('posts.id', 'title', 'message', 'created_at', 'department', 'is_released')
+            ->join('accounts', 'posts.user_id', '=', 'accounts.id')
+            ->where('user_id', $id)
+            ->orWhere('is_released', true)
+            ->get();
+
+             $department = DB::table('accounts')
+            ->select('department')
+            ->where('id', $id)
+            ->value('department');
+        }
+
+        return view('/pages/posts/index', ['items' => $items , 'userId' => $id , 'department' => $department ]);
     }
 
     public function show($id)
@@ -53,7 +81,7 @@ class PostsController extends Controller
         $title = $request->input('title');
         $message = $request->input('message');
         $path = $request->file('image_title')->store('public/');
-        $read_img_path = str_replace('public/', 'storage', $path); //追加
+        $read_img_path = str_replace('public/', 'storage', $path);
 
         $post = new Post;
         $post->user_id = $id;
@@ -62,14 +90,6 @@ class PostsController extends Controller
         $post->image_path = $read_img_path;
         $post->created_at = new Datetime();
         $post->save();
-
-        // Post::insert(
-        //     [
-        //         'user_id' => $id,
-        //         'title' => $title,
-        //         'message' => $message
-        //     ]);
-
 
         return redirect('/posts');
 }

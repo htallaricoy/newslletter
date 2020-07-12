@@ -21,6 +21,7 @@ class CreatePostsTable extends Migration
            $table->string('image_path',100)->nullable();
            $table->dateTimeTz('created_at');
            $table->dateTimeTz('updated_at');
+           $table->boolean('is_released')->default(false);
         });
     }
 

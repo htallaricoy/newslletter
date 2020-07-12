@@ -3,7 +3,7 @@
 
 <div class="wrapper">
 
-    <h1>社内報記事詳細画面</h1>
+    <h3>{{ $title }}</h3>
     <br>
 
     {{-- @if ($userId !== 6)
@@ -12,10 +12,10 @@
     @endif --}}
 
     <div class="contents_wrapper">
-        <a href='/posts'>戻る</a>
-        <p>タイトル：{{ $title }}</p>
-        <p>内容：{{ $message }}</p>
-        <img src="/{{$imagepath}}">
+        <p>{{ $message }}</p>
+        <img src="/{{ $imagepath }}">
+        <br>
+        <button onclick="location.href='/posts'">戻る</button>
     </div>
 </div>
 
