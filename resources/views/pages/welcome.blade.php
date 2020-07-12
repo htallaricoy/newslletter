@@ -7,8 +7,8 @@
 <h1>社内報</h1>
 <br>
 
-<a href="/shanai">社員用</a>
-<a href="/kanri">管理者用</a>
+<button onclick="location.href='/shanai'">社員用</button>
+<button onclick="location.href='/kanri'">管理者用</button>
 
 </div>
 
