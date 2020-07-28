@@ -51,4 +51,8 @@ Route::get('/contents', 'NewsLetter@index');
 
 //メール
 //メール送信
-Route::get('/mail', 'MailSendController');
+Route::get('/send', 'MailSendController@SampleNotification');
+
+Route::get('/mail', function () {
+    return new App\Mail\SampleNotification();
+  });
