@@ -9,6 +9,7 @@
 
     @if ($userId !== 6)
     <button onclick="location.href='posts/create'">新規投稿</button>
+    <button onclick="location.href='welcome'">トップへ</a></button>
     @endif
     <br><br>
     <div class="contents_wrapper">
