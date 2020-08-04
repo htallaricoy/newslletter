@@ -38,5 +38,6 @@ class SampleNotification extends Mailable
                     ->with([
                         'text' => $this->text,
                       ]);
+
     }
 }
