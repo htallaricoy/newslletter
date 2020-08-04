@@ -1,7 +1,5 @@
-Sample Notification!
-
-A sample notification has been sent.
+社内報公開のお知らせ
 
 {{$text}}
 
-https://www.google.co.jp
+http://ec2-3-114-206-178.ap-northeast-1.compute.amazonaws.com/posts

@@ -27,7 +27,7 @@
                         @if ($userId === 1)
                         <button name="approval" value="{{ $item->id }}">
                         @endif
-                        {{$item->is_released === 0 ? '未公開' : '公開済' }}
+                        {{$item->is_released === 0 ? '△承認待ち' : '〇公開済み' }}
                         @if ($userId === 1)
                         </button>
                         @endif

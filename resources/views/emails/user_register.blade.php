@@ -28,16 +28,13 @@
 </style>
 <body>
 <h1>
-  Sample Notification!
+  社内報公開のお知らせ
 </h1>
-<p>
-  A sample notification has been sent.
-</p>
 <p>
   {{$text}}
 </p>
 <p id="button">
-  <a href="https://www.google.co.jp">リンクのテスト</a>
+  <a href="http://ec2-3-114-206-178.ap-northeast-1.compute.amazonaws.com/posts">シンクワン社内報</a>
 </p>
 </body>
 </html>

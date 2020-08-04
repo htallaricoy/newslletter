@@ -21,7 +21,7 @@ class SampleNotification extends Mailable
      */
     public function __construct($name='テスト', $text='テストです。')
     {
-      $this->title = sprintf('%sさん、ありがとうございます。', $name);
+      $this->title = sprintf('今月の社内報が公開されました', $name);
       $this->text = $text;
     }
 

@@ -76,22 +76,26 @@ class PostsController extends Controller
         return view('/pages/posts/create');
     }
 
-    public function store(Request $request){
-        $id = $request->session()->get('userId');
-        $title = $request->input('title');
-        $message = $request->input('message');
+public function store(Request $request){
+    $id = $request->session()->get('userId');
+    $title = $request->input('title');
+    $message = $request->input('message');
+    if (is_null($request->file('image_title'))) {
+        $read_img_path = null;
+    } else {
         $path = $request->file('image_title')->store('public/');
         $read_img_path = str_replace('public/', 'storage', $path);
+    }
 
-        $post = new Post;
-        $post->user_id = $id;
-        $post->title = $title;
-        $post->message = $message;
-        $post->image_path = $read_img_path;
-        $post->created_at = new Datetime();
-        $post->save();
+    $post = new Post;
+    $post->user_id = $id;
+    $post->title = $title;
+    $post->message = $message;
+    $post->image_path = $read_img_path;
+    $post->created_at = new Datetime();
+    $post->save();
 
-        return redirect('/posts');
+    return redirect('/posts');
 }
 
     public function destroy($id)

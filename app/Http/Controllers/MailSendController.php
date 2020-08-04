@@ -11,8 +11,8 @@ class MailSendController extends Controller
 {
   public function SampleNotification()
   {
-    $name = 'ララベル太郎';
-    $text = 'これからもよろしくお願いいたします。';
+    $name = 'シンクワン社内報';
+    $text = '今月の社内報が公開されました。以下リンクより確認してください。';
     $to = 'yajima_h@thinkone.jp';
     Mail::to($to)->send(new SampleNotification($name, $text));
   }
