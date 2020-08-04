@@ -10,6 +10,10 @@
     @if ($userId !== 6)
     <button onclick="location.href='posts/create'">新規投稿</button>
     <button onclick="location.href='welcome'">トップへ</a></button>
+    <button onclick="location.href='send'" style="background-color:red;color:white;">ML送信</a></button>
+    @endif
+    @if ($userId === 6)
+    <button onclick="location.href='welcome'">トップへ</a></button>
     @endif
     <br><br>
     <div class="contents_wrapper">

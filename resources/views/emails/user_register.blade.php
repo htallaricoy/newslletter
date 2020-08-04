@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
 <style>
-  body {
-    background-color: #fffacd;
-  }
   h1 {
     font-size: 16px;
     color: #ff6666;
@@ -16,14 +13,14 @@
     padding: 10px 20px;
     display: block;
     border: 1px solid #2a88bd;
-    background-color: #FFFFFF;
-    color: #2a88bd;
-    text-decoration: none;
-    box-shadow: 2px 2px 3px #f5deb3;
-  }
-  #button a:hover {
     background-color: #2a88bd;
     color: #FFFFFF;
+    text-decoration: none;
+    box-shadow: 2px 2px 3px #55b3b9;
+  }
+  #button a:hover {
+    background-color: #FFFFFF;
+    color: #2a88bd;
   }
 </style>
 <body>
