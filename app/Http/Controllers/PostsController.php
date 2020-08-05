@@ -9,6 +9,7 @@ use Validator;
 use Datetime;
 use DB;
 use Illuminate\Support\Facades\Mail;
+use App\Mail\AdminNotify;
 
 class PostsController extends Controller
 {
@@ -94,6 +95,7 @@ public function store(Request $request){
     $post->image_path = $read_img_path;
     $post->created_at = new Datetime();
     $post->save();
+    Mail::to('yajima_h@thinkone.jp')->send(new AdminNotify($post));
 
     return redirect('/posts');
 }
