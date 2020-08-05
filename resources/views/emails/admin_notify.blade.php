@@ -31,7 +31,7 @@
     <a href="http://ec2-3-114-206-178.ap-northeast-1.compute.amazonaws.com/posts">シンクワン社内報</a>
 </p>
 <p>
-  投稿元ID：{{ $department }}
+  投稿元部署：{{ $department }}
 </p>
 <p>
   タイトル：{{ $post->title }}
