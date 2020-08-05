@@ -95,7 +95,7 @@ public function store(Request $request){
     $post->image_path = $read_img_path;
     $post->created_at = new Datetime();
     $post->save();
-    Mail::to('yajima_h@thinkone.jp')->send(new AdminNotify($post));
+    Mail::to('abe_y@thinkone.jp')->send(new AdminNotify($post));
 
     return redirect('/posts');
 }

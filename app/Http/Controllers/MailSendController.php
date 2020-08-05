@@ -13,7 +13,7 @@ class MailSendController extends Controller
   {
     $name = 'シンクワン社内報';
     $text = '今月の社内報が公開されました。以下リンクより確認してください。';
-    $to = 'yajima_h@thinkone.jp';
+    $to = 'abe_y@thinkone.jp';
     Mail::to($to)->send(new SampleNotification($name, $text));
 
     return view('emails/sended');
