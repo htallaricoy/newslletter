@@ -11,6 +11,7 @@
     <button onclick="location.href='posts/create'">新規投稿</button>
     <button onclick="location.href='welcome'">トップへ</a></button>
     <button onclick="location.href='send'" style="background-color:red;color:white;">ML送信</a></button>
+    <button onclick="location.href='delete'" style="background-color:red;color:white;">全記事削除</a></button>
     @endif
     @if ($userId === 6)
     <button onclick="location.href='welcome'">トップへ</a></button>

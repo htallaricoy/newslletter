@@ -53,3 +53,6 @@ Route::get('/contents', 'NewsLetter@index');
 //メール送信
 Route::get('/send', 'MailSendController@SampleNotification');
 
+//投稿リフレッシュ
+Route::get('/delete', 'PostsDeleteController@PostsDelete');
+
